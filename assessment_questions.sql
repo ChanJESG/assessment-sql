@@ -31,7 +31,7 @@ SELECT u.city, COUNT(u.city) AS "Number of students in New York"
 -- ****************************************************************
 SELECT u.mobile_app, COUNT(u.mobile_app) AS "Number of Mobile App Users"
     FROM users u
-    WHERE u.mobile_app LIKE ("mobile-user")
+    WHERE u.mobile_app IN ("mobile-user")
     GROUP BY u.mobile_app;
 
 -- 5. Query for the sign up counts for each hour.
@@ -40,7 +40,7 @@ SELECT u.mobile_app, COUNT(u.mobile_app) AS "Number of Mobile App Users"
 SELECT EXTRACT(HOUR FROM u.sign_up_at) AS "Sign-Up Hour", COUNT(u.user_id) AS "Sign-Up Count"
     FROM users u
     GROUP BY `Sign-Up Hour`
-    ORDER BY `Sign-Up Hour`  DESC;
+    ORDER BY `Sign-Up Hour` DESC;
 
 -- 6. What courses are the New Yorker Students taking?
 -- Hint: SUM(CASE WHEN learn_cpp NOT IN('') THEN 1 ELSE 0 END) AS "New Yorker learners taking C++"
